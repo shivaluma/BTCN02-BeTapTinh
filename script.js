@@ -17,32 +17,26 @@ var errorlog = errortext => {
 
 var calculate = () => {
     document.querySelector(".show-error").innerHTML = "";
-
     var firstNumStr = document.getElementById("firstNum").value;
     var secondNumStr = document.getElementById("secondNum").value;
-    if (firstNumStr === "" || secondNumStr === "") {
-        if (firstNumStr === "") errorlog("Chưa nhập số thứ nhất.");
-        if (secondNumStr === "") errorlog("Chưa nhập số thứ hai.");
+    var hasError = false;
+    if (firstNumStr === "") {
+        errorlog("Chưa nhập số thứ nhất.");
+        hasError = true;
+    }
+    if (secondNumStr === "") {
+        errorlog("Chưa nhập số thứ nhất.");
+        hasError = true;
     }
 
     var firstNum = Number.parseFloat(firstNumStr);
     var secondNum = Number.parseFloat(secondNumStr);
-    var hasError = false;
-    if (firstNum != firstNumStr && firstNumStr !== "") {
-        errorlog("Số thứ nhất không hợp lệ");
-        hasError = true;
-    }
-    if (secondNum != secondNumStr && secondNumStr !== "") {
-        errorlog("Số thứ hai không hợp lệ");
-        hasError = true;
-    }
 
     var check = getChecked("operators");
     if (check === null) {
         errorlog("Chưa chọn toán tử");
-        hasError = true;
+        return;
     }
-    if (hasError) return;
     var result;
     if (check === "plus") {
         result = firstNum + secondNum;
@@ -54,4 +48,18 @@ var calculate = () => {
         result = firstNum / secondNum;
     }
     document.getElementById("resultfield").value = result;
+};
+
+checkValid = obj => {
+    document.querySelector(".show-error").innerHTML = "";
+    var number = document.getElementById(obj.id).value;
+    var hasError = false;
+    if (number === "") {
+        errorlog("Chưa nhập số thứ " + (obj.id == "firstNum" ? "nhất" : "hai") + ".");
+        hasError = true;
+    }
+    if (isNaN(number)) {
+        errorlog("Dữ liệu của số thứ " + (obj.id == "firstNum" ? "nhất" : "hai") + " không hợp lệ.");
+        hasError = true;
+    }
 };

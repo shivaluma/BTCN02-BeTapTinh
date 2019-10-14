@@ -27,13 +27,25 @@
                         <div class="input-group-prepend">
                             <div class="input-group-text">Số thứ nhất</div>
                         </div>
-                        <input type="text" class="form-control" id="firstNum" placeholder="Nhập số thứ nhất..." />
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="firstNum"
+                            placeholder="Nhập số thứ nhất..."
+                            onfocusout="checkValid(this)"
+                        />
                     </div>
                     <div class="input-group mb-2">
                         <div class="input-group-prepend">
                             <div class="input-group-text">Số thứ hai</div>
                         </div>
-                        <input type="text" class="form-control" id="secondNum" placeholder="Nhập số thứ hai..." />
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="secondNum"
+                            placeholder="Nhập số thứ hai..."
+                            onfocusout="checkValid(this)"
+                        />
                     </div>
 
                     <div class="row">
@@ -46,7 +58,7 @@
                             </div>
                         </div>
                         <div class="col-lg-2">
-                            <button type="calculate" class="btn btn-primary w-100" onclick="calculate()">Tính</button>
+                            <button class="btn btn-primary w-100" onclick="calculate()">Tính</button>
                         </div>
                     </div>
                 </div>
