@@ -25,7 +25,17 @@ var calculate = () => {
         hasError = true;
     }
     if (secondNumStr === "") {
-        errorlog("Chưa nhập số thứ nhất.");
+        errorlog("Chưa nhập số thứ hai.");
+        hasError = true;
+    }
+
+    if (isNaN(firstNumStr) && firstNumStr !== "") {
+        errorlog("Dữ liệu của số thứ nhất không hợp lệ.");
+        hasError = true;
+    }
+
+    if (isNaN(secondNumStr) && secondNumStr !== "") {
+        errorlog("Dữ liệu của số thứ hai không hợp lệ.");
         hasError = true;
     }
 
@@ -35,8 +45,9 @@ var calculate = () => {
     var check = getChecked("operators");
     if (check === null) {
         errorlog("Chưa chọn toán tử");
-        return;
+        hasError = true;
     }
+    if (hasError) return;
     var result;
     if (check === "plus") {
         result = firstNum + secondNum;
